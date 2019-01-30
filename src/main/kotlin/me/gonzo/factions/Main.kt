@@ -1,7 +1,20 @@
 package me.gonzo.factions
 
-object Main {
+import me.gonzo.factions.objects.Player
+import org.bukkit.plugin.java.JavaPlugin
 
+object Main : JavaPlugin() {
 
+    lateinit var GonzoFactionsPL : Main
+    lateinit var Players : HashMap<String, Player>
+
+    override fun onEnable() {
+        GonzoFactionsPL = this
+        Players = hashMapOf()
+    }
+
+    override fun onDisable() {
+
+    }
 
 }
