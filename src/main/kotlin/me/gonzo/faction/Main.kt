@@ -1,6 +1,6 @@
 package me.gonzo.factions
 
-import me.gonzo.factions.objects.Player
+import me.gonzo.faction.types.Player
 import org.bukkit.plugin.java.JavaPlugin
 
 object Main : JavaPlugin() {
