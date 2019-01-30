@@ -21,7 +21,7 @@ repositories {
 
     maven {
         name = "perfectdreams"
-        url = uri("https://repo.perfectdreams.net/")
+        url = "https://repo.perfectdreams.net/"
     }
 
     maven { url = "http://maven.elmakers.com/repository/" }
