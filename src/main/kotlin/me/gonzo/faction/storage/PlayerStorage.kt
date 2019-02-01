@@ -53,15 +53,15 @@ class PlayerStorage : JsonSerializer<Player>, JsonDeserializer<Player> {
 
         val player = Player(name, faction, last)
         player.combat.slaughter.apply {
-            neutro = jsonlaughter[0].asInt
-            inimigo = jsonlaughter[1].asInt
-            civis = jsonlaughter[2].asInt
+            neutral = jsonlaughter[0].asDouble
+            enemy = jsonlaughter[1].asDouble
+            civil = jsonlaughter[2].asDouble
         }
 
         player.combat.deaths.apply {
-            neutro = jsondeaths[0].asInt
-            inimigo = jsondeaths[1].asInt
-            civis = jsondeaths[2].asInt
+            neutral = jsondeaths[0].asDouble
+            enemy = jsondeaths[1].asDouble
+            civil = jsondeaths[2].asDouble
         }
 
 

@@ -19,7 +19,7 @@ object Storage {
     }
 
     @Throws(IOException::class)
-    fun whitePlayer(player : Player) {
+    fun writePlayer(player : Player) {
 
         val gson = GsonBuilder().registerTypeAdapter(Player::class.java, PlayerStorage()).setPrettyPrinting().create()
 
