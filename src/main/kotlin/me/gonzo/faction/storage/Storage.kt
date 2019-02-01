@@ -1,20 +1,20 @@
 package me.gonzo.faction.storage
 
-import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import me.gonzo.faction.Main
 import me.gonzo.faction.types.players.Player
-import java.io.File
-import java.io.FileWriter
-import java.io.IOException
+import java.io.*
 
 object Storage {
 
-    fun readPlayer(file: File) {
-        val gson = Gson()
-        file.listFiles().filter {
-            it.extension == "json"
-        }.forEach {
-            gson.fromJson(it.bufferedReader(), Player::class.java)
+    fun readPlayers() {
+        val gson = GsonBuilder().registerTypeAdapter(Player::class.java, PlayerStorage()).create()
+        val file = File(System.getProperty("user.dir"))
+
+        file.listFiles { file -> file.endsWith(".json") }.forEach {
+                jsonFile ->
+            val player = gson.fromJson(jsonFile.bufferedReader(), Player::class.java)
+            Main.Players[player.name] = player
         }
     }
 

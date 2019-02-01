@@ -13,14 +13,14 @@ class PlayerStorage : JsonSerializer<Player>, JsonDeserializer<Player> {
         obj.addProperty("faction", player.faction)
         obj.addProperty("last", player.last)
 
-        val jsoncombat = JsonArray()
+        val jsonslaughter  = JsonArray()
         val jsondeaths = JsonArray()
         val jsonprimite = JsonArray()
 
 
         for (f in player.combat.slaughter.toList()) {
             val slaughter = JsonPrimitive(f)
-            jsoncombat.add(slaughter)
+            jsonslaughter .add(slaughter)
         }
 
         for (f in player.combat.deaths.toList()) {
@@ -33,15 +33,44 @@ class PlayerStorage : JsonSerializer<Player>, JsonDeserializer<Player> {
             jsonprimite.add(power)
         }
 
-        obj.add("combate", jsoncombat)
-        obj.add("combate", jsoncombat)
-        obj.add("poder", jsonprimite)
+        obj.add("slaughter", jsonslaughter )
+        obj.add("deaths", jsondeaths)
+        obj.add("power", jsonprimite)
 
 
         return obj
     }
 
     override fun deserialize(player: JsonElement, type: Type, context: JsonDeserializationContext): Player? {
-        return null
+        val json = player.asJsonObject
+
+        val name = json.get("name").asString
+        val faction = json.get("faction").asString
+        val last = json.get("last").asString
+        val jsonlaughter = json.get("slaughter").asJsonArray
+        val jsondeaths = json.get("deaths").asJsonArray
+        val jsonpower = json.get("power").asJsonArray
+
+        val player = Player(name, faction, last)
+        player.combat.slaughter.apply {
+            first = jsonlaughter[0].asInt
+            second = jsonlaughter[1].asInt
+            third = jsonlaughter[2].asInt
+        }
+
+        player.combat.deaths.apply {
+            first = jsondeaths[0].asInt
+            second = jsondeaths[1].asInt
+            third = jsondeaths[2].asInt
+        }
+
+
+        player.power.power.apply {
+            first = jsonpower[0].asDouble
+            second = jsonpower[1].asDouble
+        }
+
+       //Main.Players[player.name] = player TODO: Apatir que colocar servidor tirar essa anotação
+        return player
     }
 }
