@@ -1,16 +1,24 @@
 package me.gonzo.faction.generics
 
-data class Triple<A, B, C>(
-    var first: A,
-    var second: B,
-    var third: C
-)
+import java.io.Serializable
 
-fun <T> Triple<T, T, T>.toList(): List<T> = listOf(first, second, third)
+data class Triple<A, B, C>(
+    var neutro: A,
+    var inimigo: B,
+    var civis: C
+) : Serializable {
+
+    override fun toString(): String = "($neutro, $inimigo, $civis)"
+}
+
+fun <T> Triple<T, T, T>.toList(): List<T> = listOf(neutro, inimigo, civis)
 
 data class Double<A, B>(
-    var first: A,
-    var second: B
-)
+    var poder: A,
+    var podermax: B
+) : Serializable {
 
-fun <T> Double<T, T>.toList(): List<T> = listOf(first, second)
+    override fun toString(): String = "($poder, $podermax)"
+}
+
+fun <T> Double<T, T>.toList(): List<T> = listOf(poder, podermax)
