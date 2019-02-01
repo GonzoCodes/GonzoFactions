@@ -20,7 +20,7 @@ class PlayerStorage : JsonSerializer<Player>, JsonDeserializer<Player> {
 
         for (f in player.combat.slaughter.toList()) {
             val slaughter = JsonPrimitive(f)
-            jsonslaughter .add(slaughter)
+            jsonslaughter.add(slaughter)
         }
 
         for (f in player.combat.deaths.toList()) {
@@ -53,24 +53,23 @@ class PlayerStorage : JsonSerializer<Player>, JsonDeserializer<Player> {
 
         val player = Player(name, faction, last)
         player.combat.slaughter.apply {
-            first = jsonlaughter[0].asInt
-            second = jsonlaughter[1].asInt
-            third = jsonlaughter[2].asInt
+            neutro = jsonlaughter[0].asInt
+            inimigo = jsonlaughter[1].asInt
+            civis = jsonlaughter[2].asInt
         }
 
         player.combat.deaths.apply {
-            first = jsondeaths[0].asInt
-            second = jsondeaths[1].asInt
-            third = jsondeaths[2].asInt
+            neutro = jsondeaths[0].asInt
+            inimigo = jsondeaths[1].asInt
+            civis = jsondeaths[2].asInt
         }
 
 
         player.power.power.apply {
-            first = jsonpower[0].asDouble
-            second = jsonpower[1].asDouble
+            poder = jsonpower[0].asDouble
+            podermax = jsonpower[1].asDouble
         }
 
-       //Main.Players[player.name] = player TODO: Apatir que colocar servidor tirar essa anotação
         return player
     }
 }

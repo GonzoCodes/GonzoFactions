@@ -6,11 +6,10 @@ import org.bukkit.plugin.java.JavaPlugin
 object Main : JavaPlugin() {
 
     lateinit var GonzoFactionsPL : Main
-    lateinit var Players : HashMap<String, Player>
+    var Players : HashMap<String, Player> = hashMapOf()
 
     override fun onEnable() {
         GonzoFactionsPL = this
-        Players = hashMapOf()
     }
 
     override fun onDisable() {
