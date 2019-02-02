@@ -22,3 +22,17 @@ data class Double<A, B>(
 }
 
 fun <T> Double<T, T>.toList(): List<T> = listOf(poder, podermax)
+
+/*data class Location<A,B,C,D,E,F> (
+    var x : A,
+    var y : B,
+    var z : C,
+    var yaw : D,
+    var pitch : E,
+    var UUID : F
+)  : Serializable {
+
+    override fun toString(): String = "($x, $y, $z, $yaw, $pitch, $UUID)"
+}
+
+fun <T> Location<T,T,T,T,T,T>.toList() : List<T> = listOf(x, y, z, yaw, pitch, UUID)*/

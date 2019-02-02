@@ -1,4 +1,4 @@
-package me.gonzo.faction.storage
+package me.gonzo.faction.storage.player
 
 import com.google.gson.*
 import me.gonzo.faction.generics.toList

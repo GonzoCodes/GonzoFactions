@@ -3,7 +3,12 @@ package me.gonzo.faction.types.players
 import me.gonzo.faction.generics.Double
 import me.gonzo.faction.generics.Triple
 
-class Player(var name : String, var faction : String, var last : String, var combat : Combat = Combat(), var power : Power = Power()) {
+class Player(var name : String,
+             var faction : String,
+             var last : String,
+             var combat : Combat = Combat(),
+             var power : Power = Power())
+{
 
     val kdr : kotlin.Double
     get() {
