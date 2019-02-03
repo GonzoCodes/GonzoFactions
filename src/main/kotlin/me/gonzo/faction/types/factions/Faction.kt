@@ -26,5 +26,4 @@ class Faction(
     var historic : HashMap<Long, HashMap<Int, Any>> = hashMapOf()
     val attack : Boolean = false
 
-
 }

@@ -13,7 +13,7 @@ data class Triple<A, B, C>(
 
 fun <T> Triple<T, T, T>.toList(): List<T> = listOf(neutral, enemy, civil)
 
-data class Double<A, B>(
+data class Pair<A, B>(
     var poder: A,
     var podermax: B
 ) : Serializable {
@@ -21,7 +21,7 @@ data class Double<A, B>(
     override fun toString(): String = "($poder, $podermax)"
 }
 
-fun <T> Double<T, T>.toList(): List<T> = listOf(poder, podermax)
+fun <T> Pair<T, T>.toList(): List<T> = listOf(poder, podermax)
 
 /*data class Location<A,B,C,D,E,F> (
     var x : A,

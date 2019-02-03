@@ -10,7 +10,7 @@ class PlayerStorage : JsonSerializer<Player>, JsonDeserializer<Player> {
     override fun serialize(player: Player, type : Type, context: JsonSerializationContext): JsonElement {
         val obj = JsonObject()
         obj.addProperty("name", player.name)
-        obj.addProperty("faction", player.faction)
+        obj.addProperty("faction", player.factionName)
         obj.addProperty("last", player.last)
 
         val jsonslaughter  = JsonArray()
@@ -36,6 +36,8 @@ class PlayerStorage : JsonSerializer<Player>, JsonDeserializer<Player> {
         obj.add("slaughter", jsonslaughter )
         obj.add("deaths", jsondeaths)
         obj.add("power", jsonprimite)
+        obj.addProperty("online", player.last)
+
 
 
         return obj
@@ -47,11 +49,12 @@ class PlayerStorage : JsonSerializer<Player>, JsonDeserializer<Player> {
         val name = json.get("name").asString
         val faction = json.get("faction").asString
         val last = json.get("last").asString
+        val online = json.get("online").asLong
         val jsonlaughter = json.get("slaughter").asJsonArray
         val jsondeaths = json.get("deaths").asJsonArray
         val jsonpower = json.get("power").asJsonArray
 
-        val player = Player(name, faction, last)
+        val player = Player(name, faction, last, online=online)
         player.combat.slaughter.apply {
             neutral = jsonlaughter[0].asDouble
             enemy = jsonlaughter[1].asDouble
@@ -69,6 +72,8 @@ class PlayerStorage : JsonSerializer<Player>, JsonDeserializer<Player> {
             poder = jsonpower[0].asDouble
             podermax = jsonpower[1].asDouble
         }
+
+
 
         return player
     }
