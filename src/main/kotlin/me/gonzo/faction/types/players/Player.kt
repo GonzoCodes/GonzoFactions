@@ -1,12 +1,7 @@
 package me.gonzo.faction.types.players
 
-import me.gonzo.faction.Main
 import me.gonzo.faction.generics.Pair
 import me.gonzo.faction.generics.Triple
-import me.gonzo.faction.types.factions.Faction
-import me.gonzo.faction.types.factions.Role
-import java.text.SimpleDateFormat
-import java.util.*
 
 class Player(var name : String,
              var factionName : String,
@@ -18,11 +13,11 @@ class Player(var name : String,
 
     var power : Power = Power()
 
-    val permission = Permission()
+    var permission = PermissionsMember()
 
-    val invites = listOf<String>()
+    /*val invites = listOf<String>()
 
-    val kdr : kotlin.Double
+    val kdr : Double
     get() {
         val deaths =  combat.deaths.civil + combat.deaths.enemy + combat.deaths.neutral
         val slaughter = combat.slaughter.civil + combat.slaughter.enemy + combat.slaughter.neutral
@@ -58,7 +53,7 @@ class Player(var name : String,
         Role.Office -> "*"
         Role.Leader -> "#"
     }
-
+*/
 }
 
 class Combat {
